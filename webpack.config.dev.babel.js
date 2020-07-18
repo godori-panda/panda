@@ -4,6 +4,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
+    resolve: {
+        extensions: ['.jsx', '.js']
+    },
     mode: 'development',
     entry: './react-src/client.js',
     output: {
@@ -12,7 +15,8 @@ module.exports = {
 
     devServer: {
         contentBase: path.join(__dirname, 'public'),
-        hot: true
+        hot: true,
+        historyApiFallback : true
     },
 
     devtool: 'inline-source-map',
@@ -28,7 +32,12 @@ module.exports = {
                 test: /\.scss$/,
                 use: [
                     "style-loader",
-                    "css-loader",
+                    {
+                        loader:"css-loader",
+                        options: {
+                            modules : true
+                        }
+                    },
                     "sass-loader"
                 ]
             },
@@ -37,7 +46,7 @@ module.exports = {
                 use: 'file-loader'
             },
             {
-                test: /\.js$/,
+                test: /\.js|.jsx$/,
                 exclude: /node_modules/,
                 use: 'babel-loader',
             },

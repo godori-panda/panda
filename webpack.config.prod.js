@@ -9,6 +9,9 @@ const SERVER_OUTPUT_PATH = 'src/main/resources/public';
 module.exports = [
     // Client (frontend) bundle
     {
+        resolve: {
+            extensions: ['.jsx', '.js']
+        },
         mode: 'production',
         entry: './react-src/client.js',
 
@@ -31,7 +34,12 @@ module.exports = [
                     test: /\.scss$/,
                     use: [
                         MiniCssExtractPlugin.loader,
-                        "css-loader",
+                        {
+                            loader:"css-loader",
+                            options: {
+                                modules : true
+                            }
+                        },
                         "sass-loader"
                     ]
                 },
@@ -68,7 +76,7 @@ module.exports = [
                     use: 'file-loader'
                 },
                 {
-                    test: /\.js$/,
+                    test: /\.(js|jsx)$/,
                     exclude: /node_modules/,
                     use: 'babel-loader',
                 },
