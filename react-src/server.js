@@ -3,6 +3,7 @@ import ReactDOMServer from 'react-dom/server'
 import serialize from 'serialize-javascript';
 
 import App from './components/app'
+import {StaticRouter} from "react-router-dom";
 
 global.render = (template, model) => {
 
