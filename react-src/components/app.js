@@ -6,6 +6,10 @@ import Home from './home'
 import Dynamic from './dynamic'
 import Static from './static'
 import Footer from "./footer";
+import Form from "./pages/Form";
+import enTranslations from '@shopify/polaris/locales/en.json';
+import {AppProvider, Button} from '@shopify/polaris';
+import Order from "./pages/Order";
 
 class App extends React.Component {
 
@@ -21,9 +25,8 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <Navigation/>
-
                 <div id="body">
+                    <AppProvider i18n={enTranslations}>
                     <Switch>
                         <Route exact path="/" component={Home}/>
                         <Route path="/dynamic" render={(props) =>
@@ -32,11 +35,12 @@ class App extends React.Component {
                                      postcodeQuery={this.state.postcodeQuery}/>
                         }/>
                         <Route path="/static" component={Static}/>
+                        <Route path="/form" component={Form}/>
+                        <Route path="/order" component={Order}/>
                         <Redirect to="/"/>
                     </Switch>
+                    </AppProvider>
                 </div>
-
-                <Footer/>
             </div>
         )
     }

@@ -26,6 +26,16 @@ class Home extends React.Component {
                                         Static Content
                                     </Button>
                                 </LinkContainer>
+                                <LinkContainer to="/form">
+                                    <Button className="stacked" color="primary">
+                                        Form
+                                    </Button>
+                                </LinkContainer>
+                                <LinkContainer to="/order">
+                                    <Button className="stacked" color="primary">
+                                        Order
+                                    </Button>
+                                </LinkContainer>
                             </div>
                         </div>
                     </div>
